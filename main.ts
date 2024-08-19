@@ -2,25 +2,9 @@ namespace SpriteKind {
     export const pop1 = SpriteKind.create()
 }
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile0`, function (sprite, location) {
-    if (true) {
-        mySprite4 = sprites.create(img`
-            3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
-            3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
-            3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
-            3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
-            3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
-            3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
-            3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
-            3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
-            3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
-            3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
-            3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
-            3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
-            3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
-            3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
-            3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
-            3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
-            `, SpriteKind.Player)
+    if (dot.x == 2 && dot.y == 0) {
+        tiles.setTileAt(tiles.getTileLocation(1, 9), assets.tile`myTile1`)
+        tiles.setCurrentTilemap(tilemap`level4`)
     }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, location) {
@@ -45,23 +29,17 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, lo
     mySprite2.setFlag(SpriteFlag.RelativeToCamera, true)
     scaling.scaleToPixels(mySprite2, 32, ScaleDirection.Uniformly, ScaleAnchor.Middle)
     mySprite2.setPosition(125, 70)
-})
-controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    Render.jumpWithHeightAndDuration(mySprite, 16, 500)
-})
-controller.menu.onEvent(ControllerButtonEvent.Repeated, function () {
-    Render.moveWithController(1, 1, 1)
-    mySprite3 = sprites.create(img`
+    dot = sprites.create(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
-        . . . . . . . 2 . . . . . . . . 
-        . . . . . . . 2 . . . . . . . . 
-        . . . . . . . 2 . . . . . . . . 
-        . . . . 2 2 2 2 2 2 2 . . . . . 
-        . . . . . . . 2 . . . . . . . . 
-        . . . . . . . 2 . . . . . . . . 
-        . . . . . . . 2 . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . 3 . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -69,10 +47,19 @@ controller.menu.onEvent(ControllerButtonEvent.Repeated, function () {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, SpriteKind.Player)
-    mySprite3.setFlag(SpriteFlag.RelativeToCamera, true)
+    dot.setPosition(2, 0)
+})
+controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+    Render.jumpWithHeightAndDuration(mySprite, 16, 500)
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile9`, function (sprite, location) {
+    mySprite.setPosition(125, 30)
+})
+scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.chestClosed, function (sprite, location) {
+    game.showLongText(game.ask(game.askForString("oa", 2)), DialogLayout.Full)
 })
 controller.menu.onEvent(ControllerButtonEvent.Pressed, function () {
-    Render.moveWithController(2, 3, 2)
+    Render.moveWithController(2, 2, 2)
     mySprite3 = sprites.create(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -95,7 +82,7 @@ controller.menu.onEvent(ControllerButtonEvent.Pressed, function () {
 })
 let mySprite3: Sprite = null
 let mySprite2: Sprite = null
-let mySprite4: Sprite = null
+let dot: Sprite = null
 let mySprite: Sprite = null
 mySprite = Render.getRenderSpriteVariable()
 scene.setBackgroundImage(img`
