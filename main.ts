@@ -7,10 +7,12 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile0`, function (sprite, l
     if (dot.x == 2 && dot.y == 0) {
         tiles.setTileAt(tiles.getTileLocation(1, 9), assets.tile`myTile1`)
         tiles.setCurrentTilemap(tilemap`level4`)
+        mySprite2.x = 0
     }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile1`, function (sprite, location) {
     tiles.setCurrentTilemap(tilemap`level2`)
+    mySprite.setFlag(SpriteFlag.GhostThroughWalls, true)
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, location) {
     mySprite2 = sprites.create(img`
@@ -57,6 +59,9 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, lo
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     Render.jumpWithHeightAndDuration(mySprite, 16, 500)
 })
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile4`, function (sprite, location) {
+    mySprite.setFlag(SpriteFlag.GhostThroughWalls, false)
+})
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile9`, function (sprite, location) {
     mySprite.setPosition(125, 30)
 })
@@ -87,6 +92,9 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.chestClosed, function (sp
         mySprite.setPosition(125, 30)
         game.setGameOverMessage(false, "GAME OVER!")
     }
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile2`, function (sprite, location) {
+    mySprite.setPosition(24, 58)
 })
 controller.menu.onEvent(ControllerButtonEvent.Pressed, function () {
     Render.moveWithController(2, 2, 2)
