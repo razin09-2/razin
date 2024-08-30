@@ -86,6 +86,11 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, lo
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     Render.jumpWithHeightAndDuration(mySprite, 16, 500)
 })
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile7`, function (sprite, location) {
+    if (dot1.x == 1 && dot1.y == 0) {
+        game.gameOver(true)
+    }
+})
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile4`, function (sprite, location) {
     mySprite.setFlag(SpriteFlag.GhostThroughWalls, false)
 })
@@ -166,7 +171,7 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.chestClosed, function (sp
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile2`, function (sprite, location) {
     mySprite.setPosition(24, 58)
-    dot.setPosition(11, 0)
+    dot.setPosition(2, 0)
     C = sprites.create(img`
         1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
         1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
@@ -230,6 +235,25 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile2`, function (sprite, l
     scaling.scaleToPixels(statusbar8, 16, ScaleDirection.Uniformly, ScaleAnchor.Middle)
     statusbar8.setFlag(SpriteFlag.RelativeToCamera, true)
     statusbar8.setPosition(96, 111)
+    dot1 = sprites.create(img`
+        8 . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `, SpriteKind.Player)
+    dot1.setPosition(1, 0)
 })
 controller.menu.onEvent(ControllerButtonEvent.Pressed, function () {
     Render.moveWithController(2, 2, 2)
@@ -283,6 +307,7 @@ let C: Sprite = null
 let statusbar6: Sprite = null
 let statusbar5: Sprite = null
 let mySprite4: Sprite = null
+let dot1: Sprite = null
 let statusbar2: Sprite = null
 let mySprite2: Sprite = null
 let dot: Sprite = null
