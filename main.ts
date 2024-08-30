@@ -2,6 +2,7 @@ namespace SpriteKind {
     export const pop1 = SpriteKind.create()
     export const pic = SpriteKind.create()
     export const onoi = SpriteKind.create()
+    export const i = SpriteKind.create()
 }
 namespace StatusBarKind {
     export const invotery = StatusBarKind.create()
@@ -183,52 +184,52 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile2`, function (sprite, l
         1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
         1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
         1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-        `, SpriteKind.pic)
+        `, SpriteKind.i)
     C.setFlag(SpriteFlag.RelativeToCamera, true)
     scaling.scaleToPixels(C, 32, ScaleDirection.Uniformly, ScaleAnchor.Middle)
     C.setPosition(123, 70)
     statusbar7 = sprites.create(img`
-        d d d d d d d d d d d d d d d d 
-        d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
-        d 1 f f f f f f f f f f f f 1 d 
-        d 1 f 1 1 1 1 1 1 1 1 1 1 1 1 d 
-        d 1 f 1 1 1 1 1 1 1 1 1 1 1 1 d 
-        d 1 f 1 1 1 1 1 1 1 1 1 1 1 1 d 
-        d 1 f 1 1 1 1 1 1 1 1 1 1 1 1 d 
-        d 1 f 1 1 1 1 1 1 1 1 1 1 1 1 d 
-        d 1 f 1 1 1 1 1 1 1 1 1 1 1 1 d 
-        d 1 f 1 1 1 1 1 1 1 1 1 1 1 1 d 
-        d 1 f 1 1 1 1 1 1 1 1 1 1 1 1 d 
-        d 1 f 1 1 1 1 1 1 1 1 1 1 1 1 d 
-        d 1 f f f f f f f f f f f f 1 d 
-        d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
-        d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
-        d d d d d d d d d d d d d d d d 
+        f f f f f f f f f f f f f f f f 
+        f 1 1 1 1 1 1 1 1 1 1 1 1 1 1 f 
+        f 1 f f f f f f f f f f f f 1 f 
+        f 1 f 1 1 1 1 1 1 1 1 1 1 1 1 f 
+        f 1 f 1 1 1 1 1 1 1 1 1 1 1 1 f 
+        f 1 f 1 1 1 1 1 1 1 1 1 1 1 1 f 
+        f 1 f 1 1 1 1 1 1 1 1 1 1 1 1 f 
+        f 1 f 1 1 1 1 1 1 1 1 1 1 1 1 f 
+        f 1 f 1 1 1 1 1 1 1 1 1 1 1 1 f 
+        f 1 f 1 1 1 1 1 1 1 1 1 1 1 1 f 
+        f 1 f 1 1 1 1 1 1 1 1 1 1 1 1 f 
+        f 1 f 1 1 1 1 1 1 1 1 1 1 1 1 f 
+        f 1 f f f f f f f f f f f f 1 f 
+        f 1 1 1 1 1 1 1 1 1 1 1 1 1 1 f 
+        f 1 1 1 1 1 1 1 1 1 1 1 1 1 1 f 
+        f f f f f f f f f f f f f f f f 
         `, SpriteKind.StatusBar)
     scaling.scaleToPixels(statusbar7, 16, ScaleDirection.Uniformly, ScaleAnchor.Middle)
     statusbar7.setFlag(SpriteFlag.RelativeToCamera, true)
     statusbar7.setPosition(60, 111)
     statusbar8 = sprites.create(img`
-        f f f f f f f f f f f f f f f f 
-        f 1 1 1 1 1 1 1 1 1 1 1 1 1 1 f 
-        f 1 1 1 1 1 1 1 1 1 1 1 1 1 1 f 
-        f 1 1 1 1 f f f f 1 1 1 1 1 1 f 
-        f 1 1 1 f d d d d f e e 1 1 1 f 
-        f 1 1 1 1 f f f d d e e 1 1 1 f 
-        f 1 1 1 1 1 1 1 e 1 d f 1 1 1 f 
-        f 1 1 1 1 1 1 e e e d d f 1 1 f 
-        f 1 1 1 1 1 e e e 1 f d f 1 1 f 
-        f 1 1 1 1 e e e 1 1 f d f 1 1 f 
-        f 1 1 1 e e e 1 1 1 f d f 1 1 f 
-        f 1 1 e e e 1 1 1 1 1 f 1 1 1 f 
-        f 1 1 e e 1 1 1 1 1 1 1 1 1 1 f 
-        f 1 1 1 1 1 1 1 1 1 1 1 1 1 1 f 
-        f 1 1 1 1 1 1 1 1 1 1 1 1 1 1 f 
-        f f f f f f f f f f f f f f f f 
+        d d d d d d d d d d d d d d d d 
+        d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
+        d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
+        d 1 1 1 1 f f f f 1 1 1 1 1 1 d 
+        d 1 1 1 f d d d d f e e 1 1 1 d 
+        d 1 1 1 1 f f f d d e e 1 1 1 d 
+        d 1 1 1 1 1 1 1 e 1 d f 1 1 1 d 
+        d 1 1 1 1 1 1 e e e d d f 1 1 d 
+        d 1 1 1 1 1 e e e 1 f d f 1 1 d 
+        d 1 1 1 1 e e e 1 1 f d f 1 1 d 
+        d 1 1 1 e e e 1 1 1 f d f 1 1 d 
+        d 1 1 e e e 1 1 1 1 1 f 1 1 1 d 
+        d 1 1 e e 1 1 1 1 1 1 1 1 1 1 d 
+        d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
+        d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
+        d d d d d d d d d d d d d d d d 
         `, SpriteKind.StatusBar)
     scaling.scaleToPixels(statusbar8, 16, ScaleDirection.Uniformly, ScaleAnchor.Middle)
     statusbar8.setFlag(SpriteFlag.RelativeToCamera, true)
-    statusbar8.setPosition(78, 111)
+    statusbar8.setPosition(96, 111)
 })
 controller.menu.onEvent(ControllerButtonEvent.Pressed, function () {
     Render.moveWithController(2, 2, 2)
