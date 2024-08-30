@@ -12,8 +12,12 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile0`, function (sprite, l
     }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile1`, function (sprite, location) {
-    tiles.setCurrentTilemap(tilemap`level2`)
-    mySprite.setFlag(SpriteFlag.GhostThroughWalls, true)
+    if (dot.x == 10) {
+        tiles.setCurrentTilemap(tilemap`level2`)
+        mySprite.setFlag(SpriteFlag.GhostThroughWalls, true)
+    } else {
+        tiles.setCurrentTilemap(tilemap`level2`)
+    }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, location) {
     mySprite2 = sprites.create(img`
@@ -57,22 +61,22 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, lo
         `, SpriteKind.Player)
     dot.setPosition(2, 0)
     statusbar2 = sprites.create(img`
-        d d d d d d d d d d d d d d d d 
-        d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
-        d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
-        d 1 1 f f f f f f f f f f 1 1 d 
-        d 1 1 f 1 1 1 1 1 1 1 1 1 1 1 d 
-        d 1 1 f 1 1 1 1 1 1 1 1 1 1 1 d 
-        d 1 1 f 1 1 1 1 1 1 1 1 1 1 1 d 
-        d 1 1 f 1 1 1 1 1 1 1 1 1 1 1 d 
-        d 1 1 f f f f f f f f f f 1 1 d 
-        d 1 1 1 1 1 1 1 1 1 1 1 f 1 1 d 
-        d 1 1 1 1 1 1 1 1 1 1 1 f 1 1 d 
-        d 1 1 1 1 1 1 1 1 1 1 1 f 1 1 d 
-        d 1 1 f f f f f f f f f f 1 1 d 
-        d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
-        d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
-        d d d d d d d d d d d d d d d d 
+        f f f f f f f f f f f f f f f f 
+        f 1 1 1 1 1 1 1 1 1 1 1 1 1 1 f 
+        f 1 1 1 1 1 1 1 1 1 1 1 1 1 1 f 
+        f 1 1 f f f f f f f f f f 1 1 f 
+        f 1 1 f 1 1 1 1 1 1 1 1 1 1 1 f 
+        f 1 1 f 1 1 1 1 1 1 1 1 1 1 1 f 
+        f 1 1 f 1 1 1 1 1 1 1 1 1 1 1 f 
+        f 1 1 f 1 1 1 1 1 1 1 1 1 1 1 f 
+        f 1 1 f f f f f f f f f f 1 1 f 
+        f 1 1 1 1 1 1 1 1 1 1 1 f 1 1 f 
+        f 1 1 1 1 1 1 1 1 1 1 1 f 1 1 f 
+        f 1 1 1 1 1 1 1 1 1 1 1 f 1 1 f 
+        f 1 1 f f f f f f f f f f 1 1 f 
+        f 1 1 1 1 1 1 1 1 1 1 1 1 1 1 f 
+        f 1 1 1 1 1 1 1 1 1 1 1 1 1 1 f 
+        f f f f f f f f f f f f f f f f 
         `, SpriteKind.StatusBar)
     scaling.scaleToPixels(statusbar2, 16, ScaleDirection.Uniformly, ScaleAnchor.Middle)
     statusbar2.setFlag(SpriteFlag.RelativeToCamera, true)
@@ -87,29 +91,26 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile4`, function (sprite, l
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile9`, function (sprite, location) {
     mySprite.setPosition(125, 30)
 })
-function copy2 () {
-	
-}
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.chestClosed, function (sprite, location) {
     if (game.askForString("what is the number and number minus one?", 2) == "ed") {
         mySprite.setPosition(125, 30)
         mySprite4 = sprites.create(img`
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . f f f f . . . . . . . . 
-            . . . f d d d d f e e . . . . . 
-            . . . . f f f d d e e . . . . . 
-            . . . . . . . e 1 d f . . . . . 
-            . . . . . . e e e d d f . . . . 
-            . . . . . e e e . f d f . . . . 
-            . . . . e e e . . f d f . . . . 
-            . . . e e e . . . f d f . . . . 
-            . . e e e . . . . . f . . . . . 
-            . . e e . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
+            d d d d d d d d d d d d d d d d 
+            d d d d d d d d d d d d d d d d 
+            d d d d d d d d d d d d d d d d 
+            d d d d d f f f f d d d d d d d 
+            d d d d f d d d d f e e d d d d 
+            d d d d d f f f d d e e d d d d 
+            d d d d d d d d e 1 d f d d d d 
+            d d d d d d d e e e d d f d d d 
+            d d d d d d e e e d f d f d d d 
+            d d d d d e e e d d f d f d d d 
+            d d d d e e e d d d f d f d d d 
+            d d d e e e d d d d d f d d d d 
+            d d d e e d d d d d d d d d d d 
+            d d d d d d d d d d d d d d d d 
+            d d d d d d d d d d d d d d d d 
+            d d d d d d d d d d d d d d d d 
             `, SpriteKind.pic)
         mySprite4.setFlag(SpriteFlag.RelativeToCamera, true)
         scaling.scaleToPixels(mySprite4, 32, ScaleDirection.Uniformly, ScaleAnchor.Middle)
@@ -117,16 +118,16 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.chestClosed, function (sp
             d d d d d d d d d d d d d d d d 
             d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
             d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
-            d 1 1 1 1 f f f f 1 1 1 1 1 1 d 
-            d 1 1 1 f d d d d f e e 1 1 1 d 
-            d 1 1 1 1 f f f d d e e 1 1 1 d 
-            d 1 1 1 1 1 1 1 e 1 d f 1 1 1 d 
-            d 1 1 1 1 1 1 e e e d d f 1 1 d 
-            d 1 1 1 1 1 e e e 1 f d f 1 1 d 
-            d 1 1 1 1 e e e 1 1 f d f 1 1 d 
-            d 1 1 1 e e e 1 1 1 f d f 1 1 d 
-            d 1 1 e e e 1 1 1 1 1 f 1 1 1 d 
-            d 1 1 e e 1 1 1 1 1 1 1 1 1 1 d 
+            d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
+            d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
+            d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
+            d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
+            d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
+            d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
+            d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
+            d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
+            d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
+            d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
             d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
             d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
             d d d d d d d d d d d d d d d d 
@@ -134,6 +135,29 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.chestClosed, function (sp
         scaling.scaleToPixels(statusbar5, 16, ScaleDirection.Uniformly, ScaleAnchor.Middle)
         statusbar5.setFlag(SpriteFlag.RelativeToCamera, true)
         statusbar5.setPosition(96, 111)
+        mySprite4.setPosition(123, 70)
+        dot.setPosition(10, 0)
+        statusbar6 = sprites.create(img`
+            d d d d d d d d d d d d d d d d 
+            d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
+            d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
+            d 1 1 f f f f f f f f f f 1 1 d 
+            d 1 1 f 1 1 1 1 1 1 1 1 1 1 1 d 
+            d 1 1 f 1 1 1 1 1 1 1 1 1 1 1 d 
+            d 1 1 f 1 1 1 1 1 1 1 1 1 1 1 d 
+            d 1 1 f 1 1 1 1 1 1 1 1 1 1 1 d 
+            d 1 1 f f f f f f f f f f 1 1 d 
+            d 1 1 1 1 1 1 1 1 1 1 1 f 1 1 d 
+            d 1 1 1 1 1 1 1 1 1 1 1 f 1 1 d 
+            d 1 1 1 1 1 1 1 1 1 1 1 f 1 1 d 
+            d 1 1 f f f f f f f f f f 1 1 d 
+            d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
+            d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
+            d d d d d d d d d d d d d d d d 
+            `, SpriteKind.StatusBar)
+        scaling.scaleToPixels(statusbar6, 16, ScaleDirection.Uniformly, ScaleAnchor.Middle)
+        statusbar6.setFlag(SpriteFlag.RelativeToCamera, true)
+        statusbar6.setPosition(78, 111)
     } else {
         mySprite.setPosition(125, 30)
         game.setGameOverMessage(false, "GAME OVER!")
@@ -141,6 +165,70 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.chestClosed, function (sp
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile2`, function (sprite, location) {
     mySprite.setPosition(24, 58)
+    dot.setPosition(11, 0)
+    C = sprites.create(img`
+        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+        1 1 f f f f f f f f f f f f 1 1 
+        1 1 f 1 1 1 1 1 1 1 1 1 1 1 1 1 
+        1 1 f 1 1 1 1 1 1 1 1 1 1 1 1 1 
+        1 1 f 1 1 1 1 1 1 1 1 1 1 1 1 1 
+        1 1 f 1 1 1 1 1 1 1 1 1 1 1 1 1 
+        1 1 f 1 1 1 1 1 1 1 1 1 1 1 1 1 
+        1 1 f 1 1 1 1 1 1 1 1 1 1 1 1 1 
+        1 1 f 1 1 1 1 1 1 1 1 1 1 1 1 1 
+        1 1 f 1 1 1 1 1 1 1 1 1 1 1 1 1 
+        1 1 f 1 1 1 1 1 1 1 1 1 1 1 1 1 
+        1 1 f f f f f f f f f f f f 1 1 
+        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+        `, SpriteKind.pic)
+    C.setFlag(SpriteFlag.RelativeToCamera, true)
+    scaling.scaleToPixels(C, 32, ScaleDirection.Uniformly, ScaleAnchor.Middle)
+    C.setPosition(123, 70)
+    statusbar7 = sprites.create(img`
+        d d d d d d d d d d d d d d d d 
+        d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
+        d 1 f f f f f f f f f f f f 1 d 
+        d 1 f 1 1 1 1 1 1 1 1 1 1 1 1 d 
+        d 1 f 1 1 1 1 1 1 1 1 1 1 1 1 d 
+        d 1 f 1 1 1 1 1 1 1 1 1 1 1 1 d 
+        d 1 f 1 1 1 1 1 1 1 1 1 1 1 1 d 
+        d 1 f 1 1 1 1 1 1 1 1 1 1 1 1 d 
+        d 1 f 1 1 1 1 1 1 1 1 1 1 1 1 d 
+        d 1 f 1 1 1 1 1 1 1 1 1 1 1 1 d 
+        d 1 f 1 1 1 1 1 1 1 1 1 1 1 1 d 
+        d 1 f 1 1 1 1 1 1 1 1 1 1 1 1 d 
+        d 1 f f f f f f f f f f f f 1 d 
+        d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
+        d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
+        d d d d d d d d d d d d d d d d 
+        `, SpriteKind.StatusBar)
+    scaling.scaleToPixels(statusbar7, 16, ScaleDirection.Uniformly, ScaleAnchor.Middle)
+    statusbar7.setFlag(SpriteFlag.RelativeToCamera, true)
+    statusbar7.setPosition(60, 111)
+    statusbar8 = sprites.create(img`
+        f f f f f f f f f f f f f f f f 
+        f 1 1 1 1 1 1 1 1 1 1 1 1 1 1 f 
+        f 1 1 1 1 1 1 1 1 1 1 1 1 1 1 f 
+        f 1 1 1 1 f f f f 1 1 1 1 1 1 f 
+        f 1 1 1 f d d d d f e e 1 1 1 f 
+        f 1 1 1 1 f f f d d e e 1 1 1 f 
+        f 1 1 1 1 1 1 1 e 1 d f 1 1 1 f 
+        f 1 1 1 1 1 1 e e e d d f 1 1 f 
+        f 1 1 1 1 1 e e e 1 f d f 1 1 f 
+        f 1 1 1 1 e e e 1 1 f d f 1 1 f 
+        f 1 1 1 e e e 1 1 1 f d f 1 1 f 
+        f 1 1 e e e 1 1 1 1 1 f 1 1 1 f 
+        f 1 1 e e 1 1 1 1 1 1 1 1 1 1 f 
+        f 1 1 1 1 1 1 1 1 1 1 1 1 1 1 f 
+        f 1 1 1 1 1 1 1 1 1 1 1 1 1 1 f 
+        f f f f f f f f f f f f f f f f 
+        `, SpriteKind.StatusBar)
+    scaling.scaleToPixels(statusbar8, 16, ScaleDirection.Uniformly, ScaleAnchor.Middle)
+    statusbar8.setFlag(SpriteFlag.RelativeToCamera, true)
+    statusbar8.setPosition(78, 111)
 })
 controller.menu.onEvent(ControllerButtonEvent.Pressed, function () {
     Render.moveWithController(2, 2, 2)
@@ -185,9 +273,13 @@ function copy () {
         `, SpriteKind.StatusBar)
     scaling.scaleToPixels(statusbar, 16, ScaleDirection.Uniformly, ScaleAnchor.Middle)
     statusbar.setFlag(SpriteFlag.RelativeToCamera, true)
-    statusbar.setPosition(75, 111)
+    statusbar.setPosition(78, 111)
 }
 let mySprite3: Sprite = null
+let statusbar8: Sprite = null
+let statusbar7: Sprite = null
+let C: Sprite = null
+let statusbar6: Sprite = null
 let statusbar5: Sprite = null
 let mySprite4: Sprite = null
 let statusbar2: Sprite = null
