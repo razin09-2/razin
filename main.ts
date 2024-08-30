@@ -100,13 +100,13 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.chestClosed, function (sp
             d d d d d d d d d d d d d d d d 
             d d d d d d d d d d d d d d d d 
             d d d d d f f f f d d d d d d d 
-            d d d d f d d d d f e e d d d d 
-            d d d d d f f f d d e e d d d d 
-            d d d d d d d d e 1 d f d d d d 
-            d d d d d d d e e e d d f d d d 
-            d d d d d d e e e d f d f d d d 
-            d d d d d e e e d d f d f d d d 
-            d d d d e e e d d d f d f d d d 
+            d d d d f 1 1 1 1 f e e d d d d 
+            d d d d d f f f 1 1 e e d d d d 
+            d d d d d d d d e 1 1 f d d d d 
+            d d d d d d d e e e 1 1 f d d d 
+            d d d d d d e e e d f 1 f d d d 
+            d d d d d e e e d d f 1 f d d d 
+            d d d d e e e d d d f 1 f d d d 
             d d d e e e d d d d d f d d d d 
             d d d e e d d d d d d d d d d d 
             d d d d d d d d d d d d d d d d 
@@ -116,22 +116,22 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.chestClosed, function (sp
         mySprite4.setFlag(SpriteFlag.RelativeToCamera, true)
         scaling.scaleToPixels(mySprite4, 32, ScaleDirection.Uniformly, ScaleAnchor.Middle)
         statusbar5 = sprites.create(img`
-            d d d d d d d d d d d d d d d d 
-            d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
-            d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
-            d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
-            d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
-            d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
-            d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
-            d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
-            d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
-            d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
-            d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
-            d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
-            d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
-            d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
-            d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
-            d d d d d d d d d d d d d d d d 
+            f f f f f f f f f f f f f f f f 
+            f 1 1 1 1 1 1 1 1 1 1 1 1 1 1 f 
+            f 1 1 1 1 1 1 1 1 1 1 1 1 1 1 f 
+            f 1 1 1 1 f f f f 1 1 1 1 1 1 f 
+            f 1 1 1 f 1 1 1 1 f e e 1 1 1 f 
+            f 1 1 1 1 f f f 1 1 e e 1 1 1 f 
+            f 1 1 1 1 1 1 1 e 1 1 f 1 1 1 f 
+            f 1 1 1 1 1 1 e e e 1 1 f 1 1 f 
+            f 1 1 1 1 1 e e e 1 f 1 f 1 1 f 
+            f 1 1 1 1 e e e 1 1 f 1 f 1 1 f 
+            f 1 1 1 e e e 1 1 1 f 1 f 1 1 f 
+            f 1 1 e e e 1 1 1 1 1 f 1 1 1 f 
+            f 1 1 e e 1 1 1 1 1 1 1 1 1 1 f 
+            f 1 1 1 1 1 1 1 1 1 1 1 1 1 1 f 
+            f 1 1 1 1 1 1 1 1 1 1 1 1 1 1 f 
+            f f f f f f f f f f f f f f f f 
             `, SpriteKind.StatusBar)
         scaling.scaleToPixels(statusbar5, 16, ScaleDirection.Uniformly, ScaleAnchor.Middle)
         statusbar5.setFlag(SpriteFlag.RelativeToCamera, true)
