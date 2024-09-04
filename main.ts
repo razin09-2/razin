@@ -86,6 +86,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, lo
         statusbar2.setFlag(SpriteFlag.RelativeToCamera, true)
         statusbar2.setPosition(78, 111)
     }
+    invertory_selection()
 })
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     Render.jumpWithHeightAndDuration(mySprite, 16, 500)
@@ -311,10 +312,33 @@ function copy () {
     statusbar.setPosition(78, 111)
 }
 function invertory_selection () {
-    if (controller.A.isPressed() && controller.B.isPressed() && dot.x == 0) {
-    	
+    if (controller.A.isPressed() && controller.B.isPressed()) {
+        if (dot.x == 2) {
+            statusbar9 = sprites.create(img`
+                d d d d d d d d d d d d d d d d 
+                d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
+                d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
+                d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
+                d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
+                d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
+                d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
+                d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
+                d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
+                d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
+                d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
+                d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
+                d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
+                d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
+                d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
+                d d d d d d d d d d d d d d d d 
+                `, SpriteKind.StatusBar)
+            scaling.scaleToPixels(statusbar9, 16, ScaleDirection.Uniformly, ScaleAnchor.Middle)
+            statusbar9.setFlag(SpriteFlag.RelativeToCamera, true)
+            statusbar9.setPosition(78, 111)
+        }
     }
 }
+let statusbar9: Sprite = null
 let mySprite3: Sprite = null
 let statusbar8: Sprite = null
 let statusbar7: Sprite = null
@@ -536,4 +560,3 @@ let statusbar4 = sprites.create(img`
 scaling.scaleToPixels(statusbar4, 16, ScaleDirection.Uniformly, ScaleAnchor.Middle)
 statusbar4.setFlag(SpriteFlag.RelativeToCamera, true)
 statusbar4.setPosition(60, 111)
-invertory_selection()
