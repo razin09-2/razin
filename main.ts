@@ -13,82 +13,88 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile0`, function (sprite, l
     }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile1`, function (sprite, location) {
-    if (dot.x == 10) {
-        tiles.setCurrentTilemap(tilemap`level2`)
-        mySprite.setFlag(SpriteFlag.GhostThroughWalls, true)
-    } else {
-        tiles.setCurrentTilemap(tilemap`level2`)
+    if (controller.B.isPressed()) {
+        if (dot.x == 10) {
+            tiles.setCurrentTilemap(tilemap`level2`)
+            mySprite.setFlag(SpriteFlag.GhostThroughWalls, true)
+        } else {
+            tiles.setCurrentTilemap(tilemap`level2`)
+        }
     }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, location) {
-    mySprite2 = sprites.create(img`
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-        1 1 f f f f f f f f f f f f 1 1 
-        1 1 f 1 1 1 1 1 1 1 1 1 1 1 1 1 
-        1 1 f 1 1 1 1 1 1 1 1 1 1 1 1 1 
-        1 1 f 1 1 1 1 1 1 1 1 1 1 1 1 1 
-        1 1 f 1 1 1 1 1 1 1 1 1 1 1 1 1 
-        1 1 f 1 1 1 1 1 1 1 1 1 1 1 1 1 
-        1 1 f f f f f f f f f f f f 1 1 
-        1 1 1 1 1 1 1 1 1 1 1 1 1 f 1 1 
-        1 1 1 1 1 1 1 1 1 1 1 1 1 f 1 1 
-        1 1 1 1 1 1 1 1 1 1 1 1 1 f 1 1 
-        1 1 1 1 1 1 1 1 1 1 1 1 1 f 1 1 
-        1 1 1 1 1 1 1 1 1 1 1 1 1 f 1 1 
-        1 1 f f f f f f f f f f f f 1 1 
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-        `, SpriteKind.onoi)
-    mySprite2.setFlag(SpriteFlag.RelativeToCamera, true)
-    scaling.scaleToPixels(mySprite2, 32, ScaleDirection.Uniformly, ScaleAnchor.Middle)
-    mySprite2.setPosition(125, 70)
-    dot = sprites.create(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . 3 . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `, SpriteKind.Player)
-    dot.setPosition(2, 0)
-    statusbar2 = sprites.create(img`
-        f f f f f f f f f f f f f f f f 
-        f 1 1 1 1 1 1 1 1 1 1 1 1 1 1 f 
-        f 1 1 1 1 1 1 1 1 1 1 1 1 1 1 f 
-        f 1 1 f f f f f f f f f f 1 1 f 
-        f 1 1 f 1 1 1 1 1 1 1 1 1 1 1 f 
-        f 1 1 f 1 1 1 1 1 1 1 1 1 1 1 f 
-        f 1 1 f 1 1 1 1 1 1 1 1 1 1 1 f 
-        f 1 1 f 1 1 1 1 1 1 1 1 1 1 1 f 
-        f 1 1 f f f f f f f f f f 1 1 f 
-        f 1 1 1 1 1 1 1 1 1 1 1 f 1 1 f 
-        f 1 1 1 1 1 1 1 1 1 1 1 f 1 1 f 
-        f 1 1 1 1 1 1 1 1 1 1 1 f 1 1 f 
-        f 1 1 f f f f f f f f f f 1 1 f 
-        f 1 1 1 1 1 1 1 1 1 1 1 1 1 1 f 
-        f 1 1 1 1 1 1 1 1 1 1 1 1 1 1 f 
-        f f f f f f f f f f f f f f f f 
-        `, SpriteKind.StatusBar)
-    scaling.scaleToPixels(statusbar2, 16, ScaleDirection.Uniformly, ScaleAnchor.Middle)
-    statusbar2.setFlag(SpriteFlag.RelativeToCamera, true)
-    statusbar2.setPosition(78, 111)
+    if (controller.B.isPressed()) {
+        mySprite2 = sprites.create(img`
+            1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+            1 1 f f f f f f f f f f f f 1 1 
+            1 1 f 1 1 1 1 1 1 1 1 1 1 1 1 1 
+            1 1 f 1 1 1 1 1 1 1 1 1 1 1 1 1 
+            1 1 f 1 1 1 1 1 1 1 1 1 1 1 1 1 
+            1 1 f 1 1 1 1 1 1 1 1 1 1 1 1 1 
+            1 1 f 1 1 1 1 1 1 1 1 1 1 1 1 1 
+            1 1 f f f f f f f f f f f f 1 1 
+            1 1 1 1 1 1 1 1 1 1 1 1 1 f 1 1 
+            1 1 1 1 1 1 1 1 1 1 1 1 1 f 1 1 
+            1 1 1 1 1 1 1 1 1 1 1 1 1 f 1 1 
+            1 1 1 1 1 1 1 1 1 1 1 1 1 f 1 1 
+            1 1 1 1 1 1 1 1 1 1 1 1 1 f 1 1 
+            1 1 f f f f f f f f f f f f 1 1 
+            1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+            1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+            `, SpriteKind.onoi)
+        mySprite2.setFlag(SpriteFlag.RelativeToCamera, true)
+        scaling.scaleToPixels(mySprite2, 32, ScaleDirection.Uniformly, ScaleAnchor.Middle)
+        mySprite2.setPosition(125, 70)
+        dot = sprites.create(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . 3 . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `, SpriteKind.Player)
+        dot.setPosition(2, 0)
+        statusbar2 = sprites.create(img`
+            f f f f f f f f f f f f f f f f 
+            f 1 1 1 1 1 1 1 1 1 1 1 1 1 1 f 
+            f 1 1 1 1 1 1 1 1 1 1 1 1 1 1 f 
+            f 1 1 f f f f f f f f f f 1 1 f 
+            f 1 1 f 1 1 1 1 1 1 1 1 1 1 1 f 
+            f 1 1 f 1 1 1 1 1 1 1 1 1 1 1 f 
+            f 1 1 f 1 1 1 1 1 1 1 1 1 1 1 f 
+            f 1 1 f 1 1 1 1 1 1 1 1 1 1 1 f 
+            f 1 1 f f f f f f f f f f 1 1 f 
+            f 1 1 1 1 1 1 1 1 1 1 1 f 1 1 f 
+            f 1 1 1 1 1 1 1 1 1 1 1 f 1 1 f 
+            f 1 1 1 1 1 1 1 1 1 1 1 f 1 1 f 
+            f 1 1 f f f f f f f f f f 1 1 f 
+            f 1 1 1 1 1 1 1 1 1 1 1 1 1 1 f 
+            f 1 1 1 1 1 1 1 1 1 1 1 1 1 1 f 
+            f f f f f f f f f f f f f f f f 
+            `, SpriteKind.StatusBar)
+        scaling.scaleToPixels(statusbar2, 16, ScaleDirection.Uniformly, ScaleAnchor.Middle)
+        statusbar2.setFlag(SpriteFlag.RelativeToCamera, true)
+        statusbar2.setPosition(78, 111)
+    }
 })
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     Render.jumpWithHeightAndDuration(mySprite, 16, 500)
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile7`, function (sprite, location) {
-    if (dot1.x == 1 && dot1.y == 0) {
-        game.gameOver(true)
+    if (controller.B.isPressed()) {
+        if (dot1.x == 1 && dot1.y == 0) {
+            game.gameOver(true)
+        }
     }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile4`, function (sprite, location) {
@@ -98,162 +104,166 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile9`, function (sprite, l
     mySprite.setPosition(125, 30)
 })
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.chestClosed, function (sprite, location) {
-    if (game.askForString("what is the number and number minus one?", 2) == "ed") {
-        mySprite.setPosition(125, 30)
-        mySprite4 = sprites.create(img`
-            d d d d d d d d d d d d d d d d 
-            d d d d d d d d d d d d d d d d 
-            d d d d d d d d d d d d d d d d 
-            d d d d d f f f f d d d d d d d 
-            d d d d f 1 1 1 1 f e e d d d d 
-            d d d d d f f f 1 1 e e d d d d 
-            d d d d d d d d e 1 1 f d d d d 
-            d d d d d d d e e e 1 1 f d d d 
-            d d d d d d e e e d f 1 f d d d 
-            d d d d d e e e d d f 1 f d d d 
-            d d d d e e e d d d f 1 f d d d 
-            d d d e e e d d d d d f d d d d 
-            d d d e e d d d d d d d d d d d 
-            d d d d d d d d d d d d d d d d 
-            d d d d d d d d d d d d d d d d 
-            d d d d d d d d d d d d d d d d 
-            `, SpriteKind.pic)
-        mySprite4.setFlag(SpriteFlag.RelativeToCamera, true)
-        scaling.scaleToPixels(mySprite4, 32, ScaleDirection.Uniformly, ScaleAnchor.Middle)
-        statusbar5 = sprites.create(img`
-            f f f f f f f f f f f f f f f f 
-            f 1 1 1 1 1 1 1 1 1 1 1 1 1 1 f 
-            f 1 1 1 1 1 1 1 1 1 1 1 1 1 1 f 
-            f 1 1 1 1 f f f f 1 1 1 1 1 1 f 
-            f 1 1 1 f 1 1 1 1 f e e 1 1 1 f 
-            f 1 1 1 1 f f f 1 1 e e 1 1 1 f 
-            f 1 1 1 1 1 1 1 e 1 1 f 1 1 1 f 
-            f 1 1 1 1 1 1 e e e 1 1 f 1 1 f 
-            f 1 1 1 1 1 e e e 1 f 1 f 1 1 f 
-            f 1 1 1 1 e e e 1 1 f 1 f 1 1 f 
-            f 1 1 1 e e e 1 1 1 f 1 f 1 1 f 
-            f 1 1 e e e 1 1 1 1 1 f 1 1 1 f 
-            f 1 1 e e 1 1 1 1 1 1 1 1 1 1 f 
-            f 1 1 1 1 1 1 1 1 1 1 1 1 1 1 f 
-            f 1 1 1 1 1 1 1 1 1 1 1 1 1 1 f 
-            f f f f f f f f f f f f f f f f 
-            `, SpriteKind.StatusBar)
-        scaling.scaleToPixels(statusbar5, 16, ScaleDirection.Uniformly, ScaleAnchor.Middle)
-        statusbar5.setFlag(SpriteFlag.RelativeToCamera, true)
-        statusbar5.setPosition(96, 111)
-        mySprite4.setPosition(123, 70)
-        dot.setPosition(10, 0)
-        statusbar6 = sprites.create(img`
-            d d d d d d d d d d d d d d d d 
-            d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
-            d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
-            d 1 1 f f f f f f f f f f 1 1 d 
-            d 1 1 f 1 1 1 1 1 1 1 1 1 1 1 d 
-            d 1 1 f 1 1 1 1 1 1 1 1 1 1 1 d 
-            d 1 1 f 1 1 1 1 1 1 1 1 1 1 1 d 
-            d 1 1 f 1 1 1 1 1 1 1 1 1 1 1 d 
-            d 1 1 f f f f f f f f f f 1 1 d 
-            d 1 1 1 1 1 1 1 1 1 1 1 f 1 1 d 
-            d 1 1 1 1 1 1 1 1 1 1 1 f 1 1 d 
-            d 1 1 1 1 1 1 1 1 1 1 1 f 1 1 d 
-            d 1 1 f f f f f f f f f f 1 1 d 
-            d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
-            d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
-            d d d d d d d d d d d d d d d d 
-            `, SpriteKind.StatusBar)
-        scaling.scaleToPixels(statusbar6, 16, ScaleDirection.Uniformly, ScaleAnchor.Middle)
-        statusbar6.setFlag(SpriteFlag.RelativeToCamera, true)
-        statusbar6.setPosition(78, 111)
-    } else {
-        mySprite.setPosition(125, 30)
-        game.setGameOverMessage(false, "GAME OVER!")
+    if (controller.B.isPressed()) {
+        if (game.askForString("what is the number and number minus one?", 2) == "ed") {
+            mySprite.setPosition(125, 30)
+            mySprite4 = sprites.create(img`
+                d d d d d d d d d d d d d d d d 
+                d d d d d d d d d d d d d d d d 
+                d d d d d d d d d d d d d d d d 
+                d d d d d f f f f d d d d d d d 
+                d d d d f 1 1 1 1 f e e d d d d 
+                d d d d d f f f 1 1 e e d d d d 
+                d d d d d d d d e 1 1 f d d d d 
+                d d d d d d d e e e 1 1 f d d d 
+                d d d d d d e e e d f 1 f d d d 
+                d d d d d e e e d d f 1 f d d d 
+                d d d d e e e d d d f 1 f d d d 
+                d d d e e e d d d d d f d d d d 
+                d d d e e d d d d d d d d d d d 
+                d d d d d d d d d d d d d d d d 
+                d d d d d d d d d d d d d d d d 
+                d d d d d d d d d d d d d d d d 
+                `, SpriteKind.pic)
+            mySprite4.setFlag(SpriteFlag.RelativeToCamera, true)
+            scaling.scaleToPixels(mySprite4, 32, ScaleDirection.Uniformly, ScaleAnchor.Middle)
+            statusbar5 = sprites.create(img`
+                f f f f f f f f f f f f f f f f 
+                f 1 1 1 1 1 1 1 1 1 1 1 1 1 1 f 
+                f 1 1 1 1 1 1 1 1 1 1 1 1 1 1 f 
+                f 1 1 1 1 f f f f 1 1 1 1 1 1 f 
+                f 1 1 1 f 1 1 1 1 f e e 1 1 1 f 
+                f 1 1 1 1 f f f 1 1 e e 1 1 1 f 
+                f 1 1 1 1 1 1 1 e 1 1 f 1 1 1 f 
+                f 1 1 1 1 1 1 e e e 1 1 f 1 1 f 
+                f 1 1 1 1 1 e e e 1 f 1 f 1 1 f 
+                f 1 1 1 1 e e e 1 1 f 1 f 1 1 f 
+                f 1 1 1 e e e 1 1 1 f 1 f 1 1 f 
+                f 1 1 e e e 1 1 1 1 1 f 1 1 1 f 
+                f 1 1 e e 1 1 1 1 1 1 1 1 1 1 f 
+                f 1 1 1 1 1 1 1 1 1 1 1 1 1 1 f 
+                f 1 1 1 1 1 1 1 1 1 1 1 1 1 1 f 
+                f f f f f f f f f f f f f f f f 
+                `, SpriteKind.StatusBar)
+            scaling.scaleToPixels(statusbar5, 16, ScaleDirection.Uniformly, ScaleAnchor.Middle)
+            statusbar5.setFlag(SpriteFlag.RelativeToCamera, true)
+            statusbar5.setPosition(96, 111)
+            mySprite4.setPosition(123, 70)
+            dot.setPosition(10, 0)
+            statusbar6 = sprites.create(img`
+                d d d d d d d d d d d d d d d d 
+                d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
+                d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
+                d 1 1 f f f f f f f f f f 1 1 d 
+                d 1 1 f 1 1 1 1 1 1 1 1 1 1 1 d 
+                d 1 1 f 1 1 1 1 1 1 1 1 1 1 1 d 
+                d 1 1 f 1 1 1 1 1 1 1 1 1 1 1 d 
+                d 1 1 f 1 1 1 1 1 1 1 1 1 1 1 d 
+                d 1 1 f f f f f f f f f f 1 1 d 
+                d 1 1 1 1 1 1 1 1 1 1 1 f 1 1 d 
+                d 1 1 1 1 1 1 1 1 1 1 1 f 1 1 d 
+                d 1 1 1 1 1 1 1 1 1 1 1 f 1 1 d 
+                d 1 1 f f f f f f f f f f 1 1 d 
+                d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
+                d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
+                d d d d d d d d d d d d d d d d 
+                `, SpriteKind.StatusBar)
+            scaling.scaleToPixels(statusbar6, 16, ScaleDirection.Uniformly, ScaleAnchor.Middle)
+            statusbar6.setFlag(SpriteFlag.RelativeToCamera, true)
+            statusbar6.setPosition(78, 111)
+        } else {
+            mySprite.setPosition(125, 30)
+            game.setGameOverMessage(false, "GAME OVER!")
+        }
     }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile2`, function (sprite, location) {
-    mySprite.setPosition(24, 58)
-    dot.setPosition(2, 0)
-    C = sprites.create(img`
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-        1 1 f f f f f f f f f f f f 1 1 
-        1 1 f 1 1 1 1 1 1 1 1 1 1 1 1 1 
-        1 1 f 1 1 1 1 1 1 1 1 1 1 1 1 1 
-        1 1 f 1 1 1 1 1 1 1 1 1 1 1 1 1 
-        1 1 f 1 1 1 1 1 1 1 1 1 1 1 1 1 
-        1 1 f 1 1 1 1 1 1 1 1 1 1 1 1 1 
-        1 1 f 1 1 1 1 1 1 1 1 1 1 1 1 1 
-        1 1 f 1 1 1 1 1 1 1 1 1 1 1 1 1 
-        1 1 f 1 1 1 1 1 1 1 1 1 1 1 1 1 
-        1 1 f 1 1 1 1 1 1 1 1 1 1 1 1 1 
-        1 1 f f f f f f f f f f f f 1 1 
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-        `, SpriteKind.i)
-    C.setFlag(SpriteFlag.RelativeToCamera, true)
-    scaling.scaleToPixels(C, 32, ScaleDirection.Uniformly, ScaleAnchor.Middle)
-    C.setPosition(123, 70)
-    statusbar7 = sprites.create(img`
-        f f f f f f f f f f f f f f f f 
-        f 1 1 1 1 1 1 1 1 1 1 1 1 1 1 f 
-        f 1 f f f f f f f f f f f f 1 f 
-        f 1 f 1 1 1 1 1 1 1 1 1 1 1 1 f 
-        f 1 f 1 1 1 1 1 1 1 1 1 1 1 1 f 
-        f 1 f 1 1 1 1 1 1 1 1 1 1 1 1 f 
-        f 1 f 1 1 1 1 1 1 1 1 1 1 1 1 f 
-        f 1 f 1 1 1 1 1 1 1 1 1 1 1 1 f 
-        f 1 f 1 1 1 1 1 1 1 1 1 1 1 1 f 
-        f 1 f 1 1 1 1 1 1 1 1 1 1 1 1 f 
-        f 1 f 1 1 1 1 1 1 1 1 1 1 1 1 f 
-        f 1 f 1 1 1 1 1 1 1 1 1 1 1 1 f 
-        f 1 f f f f f f f f f f f f 1 f 
-        f 1 1 1 1 1 1 1 1 1 1 1 1 1 1 f 
-        f 1 1 1 1 1 1 1 1 1 1 1 1 1 1 f 
-        f f f f f f f f f f f f f f f f 
-        `, SpriteKind.StatusBar)
-    scaling.scaleToPixels(statusbar7, 16, ScaleDirection.Uniformly, ScaleAnchor.Middle)
-    statusbar7.setFlag(SpriteFlag.RelativeToCamera, true)
-    statusbar7.setPosition(60, 111)
-    statusbar8 = sprites.create(img`
-        d d d d d d d d d d d d d d d d 
-        d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
-        d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
-        d 1 1 1 1 f f f f 1 1 1 1 1 1 d 
-        d 1 1 1 f d d d d f e e 1 1 1 d 
-        d 1 1 1 1 f f f d d e e 1 1 1 d 
-        d 1 1 1 1 1 1 1 e 1 d f 1 1 1 d 
-        d 1 1 1 1 1 1 e e e d d f 1 1 d 
-        d 1 1 1 1 1 e e e 1 f d f 1 1 d 
-        d 1 1 1 1 e e e 1 1 f d f 1 1 d 
-        d 1 1 1 e e e 1 1 1 f d f 1 1 d 
-        d 1 1 e e e 1 1 1 1 1 f 1 1 1 d 
-        d 1 1 e e 1 1 1 1 1 1 1 1 1 1 d 
-        d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
-        d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
-        d d d d d d d d d d d d d d d d 
-        `, SpriteKind.StatusBar)
-    scaling.scaleToPixels(statusbar8, 16, ScaleDirection.Uniformly, ScaleAnchor.Middle)
-    statusbar8.setFlag(SpriteFlag.RelativeToCamera, true)
-    statusbar8.setPosition(96, 111)
-    dot1 = sprites.create(img`
-        8 . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `, SpriteKind.Player)
-    dot1.setPosition(1, 0)
+    if (controller.B.isPressed()) {
+        mySprite.setPosition(24, 58)
+        dot.setPosition(2, 0)
+        C = sprites.create(img`
+            1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+            1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+            1 1 f f f f f f f f f f f f 1 1 
+            1 1 f 1 1 1 1 1 1 1 1 1 1 1 1 1 
+            1 1 f 1 1 1 1 1 1 1 1 1 1 1 1 1 
+            1 1 f 1 1 1 1 1 1 1 1 1 1 1 1 1 
+            1 1 f 1 1 1 1 1 1 1 1 1 1 1 1 1 
+            1 1 f 1 1 1 1 1 1 1 1 1 1 1 1 1 
+            1 1 f 1 1 1 1 1 1 1 1 1 1 1 1 1 
+            1 1 f 1 1 1 1 1 1 1 1 1 1 1 1 1 
+            1 1 f 1 1 1 1 1 1 1 1 1 1 1 1 1 
+            1 1 f 1 1 1 1 1 1 1 1 1 1 1 1 1 
+            1 1 f f f f f f f f f f f f 1 1 
+            1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+            1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+            1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+            `, SpriteKind.i)
+        C.setFlag(SpriteFlag.RelativeToCamera, true)
+        scaling.scaleToPixels(C, 32, ScaleDirection.Uniformly, ScaleAnchor.Middle)
+        C.setPosition(123, 70)
+        statusbar7 = sprites.create(img`
+            f f f f f f f f f f f f f f f f 
+            f 1 1 1 1 1 1 1 1 1 1 1 1 1 1 f 
+            f 1 f f f f f f f f f f f f 1 f 
+            f 1 f 1 1 1 1 1 1 1 1 1 1 1 1 f 
+            f 1 f 1 1 1 1 1 1 1 1 1 1 1 1 f 
+            f 1 f 1 1 1 1 1 1 1 1 1 1 1 1 f 
+            f 1 f 1 1 1 1 1 1 1 1 1 1 1 1 f 
+            f 1 f 1 1 1 1 1 1 1 1 1 1 1 1 f 
+            f 1 f 1 1 1 1 1 1 1 1 1 1 1 1 f 
+            f 1 f 1 1 1 1 1 1 1 1 1 1 1 1 f 
+            f 1 f 1 1 1 1 1 1 1 1 1 1 1 1 f 
+            f 1 f 1 1 1 1 1 1 1 1 1 1 1 1 f 
+            f 1 f f f f f f f f f f f f 1 f 
+            f 1 1 1 1 1 1 1 1 1 1 1 1 1 1 f 
+            f 1 1 1 1 1 1 1 1 1 1 1 1 1 1 f 
+            f f f f f f f f f f f f f f f f 
+            `, SpriteKind.StatusBar)
+        scaling.scaleToPixels(statusbar7, 16, ScaleDirection.Uniformly, ScaleAnchor.Middle)
+        statusbar7.setFlag(SpriteFlag.RelativeToCamera, true)
+        statusbar7.setPosition(60, 111)
+        statusbar8 = sprites.create(img`
+            d d d d d d d d d d d d d d d d 
+            d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
+            d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
+            d 1 1 1 1 f f f f 1 1 1 1 1 1 d 
+            d 1 1 1 f d d d d f e e 1 1 1 d 
+            d 1 1 1 1 f f f d d e e 1 1 1 d 
+            d 1 1 1 1 1 1 1 e 1 d f 1 1 1 d 
+            d 1 1 1 1 1 1 e e e d d f 1 1 d 
+            d 1 1 1 1 1 e e e 1 f d f 1 1 d 
+            d 1 1 1 1 e e e 1 1 f d f 1 1 d 
+            d 1 1 1 e e e 1 1 1 f d f 1 1 d 
+            d 1 1 e e e 1 1 1 1 1 f 1 1 1 d 
+            d 1 1 e e 1 1 1 1 1 1 1 1 1 1 d 
+            d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
+            d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
+            d d d d d d d d d d d d d d d d 
+            `, SpriteKind.StatusBar)
+        scaling.scaleToPixels(statusbar8, 16, ScaleDirection.Uniformly, ScaleAnchor.Middle)
+        statusbar8.setFlag(SpriteFlag.RelativeToCamera, true)
+        statusbar8.setPosition(96, 111)
+        dot1 = sprites.create(img`
+            8 . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `, SpriteKind.Player)
+        dot1.setPosition(1, 0)
+    }
 })
 controller.menu.onEvent(ControllerButtonEvent.Pressed, function () {
     Render.moveWithController(2, 2, 2)
@@ -299,6 +309,11 @@ function copy () {
     scaling.scaleToPixels(statusbar, 16, ScaleDirection.Uniformly, ScaleAnchor.Middle)
     statusbar.setFlag(SpriteFlag.RelativeToCamera, true)
     statusbar.setPosition(78, 111)
+}
+function invertory_selection () {
+    if (controller.A.isPressed() && controller.B.isPressed() && dot.x == 0) {
+    	
+    }
 }
 let mySprite3: Sprite = null
 let statusbar8: Sprite = null
@@ -521,3 +536,4 @@ let statusbar4 = sprites.create(img`
 scaling.scaleToPixels(statusbar4, 16, ScaleDirection.Uniformly, ScaleAnchor.Middle)
 statusbar4.setFlag(SpriteFlag.RelativeToCamera, true)
 statusbar4.setPosition(60, 111)
+invertory_selection()
