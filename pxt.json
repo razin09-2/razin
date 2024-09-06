@@ -5,7 +5,8 @@
         "device": "*",
         "pxt-raycasting": "github:aqeeaqee/pxt-raycasting#v0.3.18",
         "sprite-scaling": "*",
-        "pxt-status-bar": "github:jwunderl/pxt-status-bar#v0.4.2"
+        "pxt-status-bar": "github:jwunderl/pxt-status-bar#v0.4.2",
+        "pxt-button-combos": "github:jwunderl/pxt-button-combos#v0.0.24"
     },
     "files": [
         "main.blocks",

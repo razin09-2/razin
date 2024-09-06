@@ -3,6 +3,7 @@ namespace SpriteKind {
     export const pic = SpriteKind.create()
     export const onoi = SpriteKind.create()
     export const i = SpriteKind.create()
+    export const dot = SpriteKind.create()
 }
 namespace StatusBarKind {
     export const invotery = StatusBarKind.create()
@@ -86,7 +87,6 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, lo
         statusbar2.setFlag(SpriteFlag.RelativeToCamera, true)
         statusbar2.setPosition(78, 111)
     }
-    invertory_selection()
 })
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     Render.jumpWithHeightAndDuration(mySprite, 16, 500)
@@ -103,6 +103,31 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile4`, function (sprite, l
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile9`, function (sprite, location) {
     mySprite.setPosition(125, 30)
+})
+controller.combos.attachCombo("a+b", function () {
+    if (mySprite6.x == 77) {
+        statusbar9 = sprites.create(img`
+            d d d d d d d d d d d d d d d d 
+            d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
+            d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
+            d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
+            d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
+            d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
+            d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
+            d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
+            d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
+            d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
+            d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
+            d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
+            d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
+            d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
+            d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
+            d d d d d d d d d d d d d d d d 
+            `, SpriteKind.StatusBar)
+        scaling.scaleToPixels(statusbar9, 16, ScaleDirection.Uniformly, ScaleAnchor.Middle)
+        statusbar9.setFlag(SpriteFlag.RelativeToCamera, true)
+        statusbar9.setPosition(78, 111)
+    }
 })
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.chestClosed, function (sprite, location) {
     if (controller.B.isPressed()) {
@@ -311,34 +336,6 @@ function copy () {
     statusbar.setFlag(SpriteFlag.RelativeToCamera, true)
     statusbar.setPosition(78, 111)
 }
-function invertory_selection () {
-    if (controller.A.isPressed() && controller.B.isPressed()) {
-        if (dot.x == 2) {
-            statusbar9 = sprites.create(img`
-                d d d d d d d d d d d d d d d d 
-                d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
-                d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
-                d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
-                d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
-                d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
-                d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
-                d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
-                d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
-                d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
-                d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
-                d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
-                d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
-                d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
-                d 1 1 1 1 1 1 1 1 1 1 1 1 1 1 d 
-                d d d d d d d d d d d d d d d d 
-                `, SpriteKind.StatusBar)
-            scaling.scaleToPixels(statusbar9, 16, ScaleDirection.Uniformly, ScaleAnchor.Middle)
-            statusbar9.setFlag(SpriteFlag.RelativeToCamera, true)
-            statusbar9.setPosition(78, 111)
-        }
-    }
-}
-let statusbar9: Sprite = null
 let mySprite3: Sprite = null
 let statusbar8: Sprite = null
 let statusbar7: Sprite = null
@@ -346,10 +343,12 @@ let C: Sprite = null
 let statusbar6: Sprite = null
 let statusbar5: Sprite = null
 let mySprite4: Sprite = null
+let statusbar9: Sprite = null
 let dot1: Sprite = null
 let statusbar2: Sprite = null
 let mySprite2: Sprite = null
 let dot: Sprite = null
+let mySprite6: Sprite = null
 let statusbar: Sprite = null
 let mySprite: Sprite = null
 mySprite = Render.getRenderSpriteVariable()
@@ -560,3 +559,63 @@ let statusbar4 = sprites.create(img`
 scaling.scaleToPixels(statusbar4, 16, ScaleDirection.Uniformly, ScaleAnchor.Middle)
 statusbar4.setFlag(SpriteFlag.RelativeToCamera, true)
 statusbar4.setPosition(60, 111)
+let mySprite5 = sprites.create(img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . 1 . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    `, SpriteKind.dot)
+mySprite6 = sprites.create(img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . 1 . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    `, SpriteKind.dot)
+let mySprite7 = sprites.create(img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . 1 . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    `, SpriteKind.dot)
+mySprite5.setPosition(60, 111)
+mySprite6.setPosition(78, 111)
+mySprite7.setPosition(96, 111)
+mySprite5.setFlag(SpriteFlag.RelativeToCamera, true)
+mySprite6.setFlag(SpriteFlag.RelativeToCamera, true)
+mySprite7.setFlag(SpriteFlag.RelativeToCamera, true)
